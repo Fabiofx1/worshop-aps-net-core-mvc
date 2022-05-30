@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace SalesWebMvc.Models {
     public class SalesRecord {
+        private int v1;
+        private DateTime dateTime;
+        private double v2;
+        private object billed;
+
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public double Amount { get; set; }
@@ -22,6 +27,13 @@ namespace SalesWebMvc.Models {
             Amount = amount;
             Status = status;
             Seller = seller;
+        }
+
+        public SalesRecord(int v1, DateTime dateTime, double v2, object billed) {
+            this.v1 = v1;
+            this.dateTime = dateTime;
+            this.v2 = v2;
+            this.billed = billed;
         }
     }
 }
