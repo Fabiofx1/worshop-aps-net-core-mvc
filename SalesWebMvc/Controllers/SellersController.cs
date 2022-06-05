@@ -7,8 +7,7 @@ using SalesWebMvc.Models;
 using SalesWebMvc.Models.ViewModels;
 using SalesWebMvc.Services;
 
-namespace SalesWebMvc.Controllers
-{
+namespace SalesWebMvc.Controllers {
     public class SellersController : Controller {
 
         private readonly SellerService _sellerService;
@@ -65,6 +64,22 @@ namespace SalesWebMvc.Controllers
 
             _sellerService.Remove(id);
             return RedirectToAction(nameof(Index));
+
+        }
+
+        public IActionResult Details(int? id) {
+            if (id == null) {
+                return NotFound();
+
+            }
+
+            var obj = _sellerService.FindById(id.Value);
+            if (obj == null) {
+                return NotFound();
+            }
+
+            return View(obj);
+
 
         }
     }
